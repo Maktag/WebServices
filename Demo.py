@@ -1,31 +1,30 @@
-# from readAll import service_test
-#
+from readAll import service_test
+
 # se = service_test("https://cerebellum.medocity.com/v2/login")
 # PARAMS = {'password':'qwerty11','userName':'pproddr@yopmail.com'}
 # se.make_request(PARAMS)
 # print(se.return_json()['message'])
 
 import multiprocessing
-import timeit
+import time
 
-def PrintName():
-    pass
-    # print('Mayank Tyagi')
 
-p1 = multiprocessing.Process(target=PrintName)
-p2 = multiprocessing.Process(target=PrintName)
+def call_service():
+    se = service_test("https://cerebellum.medocity.com/v2/login")
+    params = {'password': 'qwerty11', 'userName': 'pproddr@yopmail.com'}
+    se.make_request(params,'Post')
+    print(se.return_json()['message'])
 
-tic = timeit.default_timer()
-print(tic)
-p1.start()
-tac = timeit.default_timer()
-print(tac)
-p2.start()
-too = timeit.default_timer()
-print(too)
+def Users(users,loop):
+    tic = time.time()
+    for j in range(loop):
+        for i in range(users):
+            p1 = multiprocessing.Process(target=call_service())
+            p1.start()
+            p1.join()
+        tac = time.time()
+        print("Total time taken by", (j+1)," loop", tac - tic)
 
-p1.join()
-p2.join()
 
-print(tac-tic)
-print(too-tac)
+if __name__ == '__main__':
+    Users(1,2)

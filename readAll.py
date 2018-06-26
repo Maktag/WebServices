@@ -11,18 +11,15 @@ class service_test:
         self.request_url = req_url
 
     def make_request(self, req_data, service_type):
-        # URL = "https://cerebellum.medocity.com/v2/login"
-        if service_type == 'POST':
+        """Options are 'Post', 'Get', 'Put' and 'Options' """
+        if service_type == 'Post':
             self.request_json = requests.post(url=self.request_url, data=req_data)
         elif service_type == 'Get':
             self.request_json = requests.get(url=self.request_url, data=req_data)
-        elif service_type == 'PUT':
+        elif service_type == 'Put':
             self.request_json = requests.put(url=self.request_url, data=req_data)
-        elif service_type == 'Get':
+        elif service_type == 'Options':
             self.request_json = requests.options(url=self.request_url, data=req_data)
-
-
-
 
     def return_json(self):
         data = self.request_json.json()
