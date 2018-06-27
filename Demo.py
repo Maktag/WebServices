@@ -14,7 +14,7 @@ def call_service():
     params = {'password': 'qwerty11', 'userName': 'pproddr@yopmail.com'}
     se.make_request(params,'Post')
     print(se.return_json()['message'])
-
+    print(se.return_status_code())
 def Users(users,loop):
     tic = time.time()
     for j in range(loop):
