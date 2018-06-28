@@ -1,18 +1,12 @@
 from readAll import service_test
-
-# se = service_test("https://cerebellum.medocity.com/v2/login")
-# PARAMS = {'password':'qwerty11','userName':'pproddr@yopmail.com'}
-# se.make_request(PARAMS)
-# print(se.return_json()['message'])
-
 import multiprocessing
 import time
-
 
 def call_service():
     se = service_test("https://cerebellum.medocity.com/v2/login")
     params = {'password': 'qwerty11', 'userName': 'pproddr@yopmail.com'}
-    se.make_request(params,'Post')
+    header = {'app_name': 'Medocity MD'}
+    se.make_request(params,header,'Post')
     print(se.return_json()['message'])
     print(se.return_status_code())
 def Users(users,loop):
@@ -27,4 +21,4 @@ def Users(users,loop):
 
 
 if __name__ == '__main__':
-    Users(1,2)
+    call_service()

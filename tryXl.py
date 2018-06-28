@@ -1,24 +1,26 @@
-import xlwt
-from datetime import datetime
-from xlrd import open_workbook
+import csv
+from readAll import service_test
 
-style0 = xlwt.easyxf('font: name Times New Roman, color-index red, bold on',
-    num_format_str='#,##0.00')
-style1 = xlwt.easyxf(num_format_str='D-MMM-YY')
+with open('Services.csv', 'r') as csvFile:
+    reader = csv.reader(csvFile)
+    rows = list(reader)
+    for row in range(len(rows)):
+        # for col in range(len(rows[0])):
+        if row >0:
+            # print(rows[row][col])
+            method = rows[row][1]
+            se = service_test(rows[row][2])
+            params = rows[row][3]
+            header = rows[row][4]
+            print(method)
+            print(params)
+            print(header)
+            se.make_request(params, header, 'Post')
+            # se.return_json()
+            # print(se.return_status_code())
+    # print(rows[1][3])
 
-wb = xlwt.Workbook()
-ws = wb.add_sheet('A Test Sheet')
+    # for row in reader:
+    #     print(row[1])
 
-ws.write(0, 0, 'Service_id', style0)
-ws.write(0, 1, 'Web_Service', style0)
-ws.write(0, 2, 'Start_At', style0)
-ws.write(0, 3, 'End_By', style0)
-ws.write(0, 4, 'Response_Code', style0)
-ws.write(0, 5, 'Json', style0)
-# ws.write(1, 0, datetime.now(), style1)
-
-wb.save('example.xls')
-
-wr = open_workbook('example.xls')
-s = wr.sheet_by_index(0)
-print(s.cell(0,0))
+csvFile.close()
