@@ -1,0 +1,2 @@
+S_id,S_method,S_url, S_Post_Put_Json ,S_Header_Json, S_Response_Json, S_Response_Code
+Login_01,Post,https://cerebellum.medocity.net/v2/login,"{""userName"":""sam@yopmail.com"", ""password"":""Qwerty11""}","{""app_name"":""Home Health""}",200,
