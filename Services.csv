@@ -1,3 +1,1 @@
 S_id,S_method,S_url, S_Post_Put_Json ,S_Header_Json, S_Response_Code, S_Time_Taken,Session
-Login_01,Post,https://cerebellum.medocity.net/v2/login,"{""userName"":""sam@yopmail.com"", ""password"":""Qwerty11""}","{""app_name"":""Home Health""}",200,3 sec,5b36324ad44625e831b6186f
-Login_02,Get,https://cerebellum.medocity.net/v2/healthtracker,"{""date"":""2018-6-29""}","{""app_name"": ""Home Health"",""session"": """"}",200,2 sec,
